@@ -10,3 +10,6 @@ SAMPLE_RUN = {
 def test_format_run_shows_the_key_fields():
     line = format_run(SAMPLE_RUN)
     assert line == "Tests  |  failure  |  attempt 2  |  3c7baaa  |  2026-11-15T23:00:16Z"
+def test_format_run_uses_status_while_running():
+    running = dict(SAMPLE_RUN, conclusion=None, status="in_progress")
+    assert "in_progress" in format_run(running) 
